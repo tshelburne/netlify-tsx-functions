@@ -1,0 +1,19 @@
+{
+  "name": "netlify-tsx-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "netlify-cli": "^9.16.6"
+  },
+  "dependencies": {
+    "@netlify/functions": "^1.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
