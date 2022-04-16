@@ -24,6 +24,8 @@ $ yarn -v
 
 ### Error
 
+The only difference between the working function and the broken function is the use of the extension `.tsx`. If I rename to `.ts`, it works correctly. However, if I have JSX in a Typescript file, it's required to use this extension.
+
 ```
 timshelburne@MacBook-Pro: ~/Projects/issue-repro/netlify-tsx-functions (master) [?]
 $ yarn netlify dev
