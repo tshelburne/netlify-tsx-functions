@@ -1,37 +1,16 @@
 import { Handler } from '@netlify/functions'
 import welcomeEmail from '../emails/text'
+import * as db from '../lib/db'
+import * as mail from '../lib/email'
 
-interface User {
-    firstName: string
-    lastName: string
-    email: string
-}
+export const handler: Handler = async () => {
+    const user = await db.getUser()
 
-export const handler: Handler = async (evt) => {
-    const user = await new Promise<User>((res) => {
-        setTimeout(() => res({
-            firstName: 'Bob',
-            lastName: 'Smith',
-            email: 'bob.smith@test.com',
-        }), 500)
-    })
-
-    await send(welcomeEmail(user))
+    const email = welcomeEmail(user)
+    await mail.send(email)
 
     return {
         statusCode: 200,
+        body: JSON.stringify({user, email}),
     }
-}
-
-interface Email {
-    to: string
-    subject: string
-    text: string
-    html?: string
-}
-
-function send(email: Email): Promise<boolean> {
-    return new Promise((res) => {
-        setTimeout(() => res(true), 500)
-    })
 }
